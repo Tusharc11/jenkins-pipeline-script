@@ -1,0 +1,53 @@
+pipeline{
+
+     agent any
+
+     stages{
+
+         stage ('build'){
+
+             steps{
+
+             echo 'I am build Stage...............'
+             build 'bank-repojen'
+
+             }
+
+         }
+
+         stage ('test'){
+
+             steps{
+
+             echo 'I am in test Stage...............'
+             build 'gradle-bank-app'
+
+             }
+
+         }
+
+         stage ('staging'){
+
+             steps{
+
+             echo 'I am Staging...............'
+             input 'do you want to continue'
+
+             }
+
+         }
+
+          stage ('release'){
+
+              steps{
+
+             echo 'I am Staging...............'
+
+              }
+
+         }
+
+     }
+
+
+ }
